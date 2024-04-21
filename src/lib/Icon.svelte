@@ -16,16 +16,14 @@
   }
 </script>
 
-{#if icon}
-  <svg
-    {...icon.attrs}
-    style="width: {width}; height: {height}; transform: rotate({rotation}deg);"
-  >
-    <g>
-      {@html icon.contents}
-    </g>
-  </svg>
-{/if}
+<svg
+  {...icon.attrs}
+  style="width: {width}; height: {height}; transform: rotate({rotation}deg);"
+>
+  <g>
+    {@html icon.contents}
+  </g>
+</svg>
 
 <style>
   svg {

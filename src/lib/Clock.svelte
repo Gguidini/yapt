@@ -12,9 +12,9 @@
   export let durationSeconds: number = 60 * 25; // Default is 25mins
   export let clockName: ClockName;
   let timeSpent = 0;
-  let playing: boolean = false;
+  let isClockRunning: boolean = false;
 
-  let interval: number | undefined = undefined;
+  let interval: string | number | NodeJS.Timeout | undefined = undefined;
 
   $: timeLeft = durationSeconds - timeSpent;
   $: minutes = getPaddedMinutesFromTimeInSeconds(timeLeft);
@@ -39,7 +39,7 @@
         stopClock();
       }
     }, 1000);
-    playing = true;
+    isClockRunning = true;
     dispatch("clock_started", { clock: clockName });
   }
 
@@ -49,11 +49,11 @@
       interval = undefined;
     }
     timeSpent = 0;
-    playing = false;
+    isClockRunning = false;
   }
 
   function handleClockFlip() {
-    if (playing) {
+    if (isClockRunning) {
       clock_complete(true);
       stopClock();
     } else {
@@ -70,7 +70,7 @@
   </div>
   <div class="text-xl">
     <button on:click={handleClockFlip}>
-      {#if playing}
+      {#if isClockRunning}
         <Icon name="refresh-ccw" />
       {:else}
         <Icon name="play" />
