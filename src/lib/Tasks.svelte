@@ -1,5 +1,6 @@
 <!-- https://svelte.dev/examples/each-block-bindings -->
 <script>
+  import Icon from "./Icon.svelte";
   import SubTitle from "./SubTitle.svelte";
 
   let tasks = [
@@ -36,8 +37,12 @@
     </div>
   {/each}
 
-  <div class="flex justify-between mt-4">
-    <button on:click={add}> Add new </button>
-    <button on:click={clear}> Clear completed </button>
+  <div class="flex flex-col mt-4">
+    <button class="m-2 text-center inline-flex items-center" on:click={add}
+      ><Icon name="edit" /> <span class="ms-2">Add new</span>
+    </button>
+    <button class="m-2 text-center inline-flex items-center" on:click={clear}
+      ><Icon name="trash" /> <span class="ms-2">Clear completed</span>
+    </button>
   </div>
 </div>

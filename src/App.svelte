@@ -66,7 +66,7 @@
 
   <div class="flex flex-col items-strech justify-evenly lg:flex-row">
     <div
-      class="flex flex-col justify-start items-strech justify-items-center basis-1/2"
+      class="flex flex-col justify-start items-strech justify-items-center basis-2/3"
       id="pomodoro"
     >
       <div id="clock-type-selector" class="py-4 flex justify-between">
@@ -114,7 +114,7 @@
       </div>
     </div>
 
-    <div class="basis-1/2 flex justify-end" id="tasks">
+    <div class="basis-1/3 flex justify-end" id="tasks">
       <Tasks />
     </div>
   </div>
