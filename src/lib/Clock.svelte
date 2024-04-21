@@ -4,6 +4,10 @@
 
   import { createEventDispatcher } from "svelte";
   import type { ClockName, ClockEvents } from "../types/clock";
+  import {
+    getPaddedMinutesFromTimeInSeconds,
+    getPaddedSecondsFromTimeInSeconds,
+  } from "../utils/clockUtils";
 
   export let durationSeconds: number = 60 * 25; // Default is 25mins
   export let clockName: ClockName;
@@ -13,12 +17,11 @@
   let interval: number | undefined = undefined;
 
   $: timeLeft = durationSeconds - timeSpent;
-  $: minutes = ("0" + Math.floor(timeLeft / 60)).slice(-2);
-  $: seconds = ("0" + (timeLeft % 60)).slice(-2);
+  $: minutes = getPaddedMinutesFromTimeInSeconds(timeLeft);
+  $: seconds = getPaddedSecondsFromTimeInSeconds(timeLeft);
 
   const dispatch = createEventDispatcher<ClockEvents>();
 
-  // TODO: Declare event type
   const clock_complete = (was_manual_reset: boolean) => {
     dispatch("clock_complete", {
       totalDuration: durationSeconds,
@@ -36,6 +39,8 @@
         stopClock();
       }
     }, 1000);
+    playing = true;
+    dispatch("clock_started", { clock: clockName });
   }
 
   function stopClock() {
@@ -54,7 +59,6 @@
     } else {
       startClock();
     }
-    playing = !playing;
   }
 
   onDestroy(stopClock);
