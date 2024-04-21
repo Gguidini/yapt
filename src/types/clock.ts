@@ -12,4 +12,8 @@ export type ClockEvents = {
     clock: ClockName;
     was_manual_reset: boolean;
   };
+
+  clock_started: {
+    clock: ClockName;
+  };
 };
