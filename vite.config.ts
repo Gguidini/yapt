@@ -1,14 +1,9 @@
-import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vitest/config';
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  plugins: [svelte()],
-  resolve: {
-    conditions: mode === "test" ? ["browser"] : [],
-  },
-  test: {
-    environment: "jsdom",
-    setupFiles: ["./vitest-setup.js"],
-  },
-}));
+export default defineConfig({
+	plugins: [sveltekit()],
+	test: {
+		include: ['src/**/*.{test,spec}.{js,ts}']
+	}
+});

@@ -1,7 +1,7 @@
 <!-- https://svelte.dev/examples/each-block-bindings -->
 <script>
-  import Icon from "./Icon.svelte";
-  import SubTitle from "./SubTitle.svelte";
+  import Icon from "$lib/Icon.svelte";
+  import SubTitle from "$lib/SubTitle.svelte";
 
   let tasks = [
     { done: false, text: "finish Svelte tutorial" },

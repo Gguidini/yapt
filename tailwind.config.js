@@ -3,6 +3,7 @@ export default {
     theme: {
       extend: {},
     },
+  content: ['./src/**/*.{html,js,svelte,ts}'],
   purge: ["./index.html",'./src/**/*.{svelte,js,ts}'], //for unused css
   variants: {
     extend: {},

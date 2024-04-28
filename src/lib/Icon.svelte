@@ -1,5 +1,6 @@
-<!-- From https://github.com/the-pudding/svelte-starter/blob/svelte/src/components/helpers/Icon.svelte -->
 <script lang="ts">
+  // From https://github.com/the-pudding/svelte-starter/blob/svelte/src/components/helpers/Icon.svelte
+
   import feather from "feather-icons";
   export const directions = ["n", "ne", "e", "se", "s", "sw", "w", "nw"];
 
