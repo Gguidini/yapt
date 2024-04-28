@@ -1,13 +1,10 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import Icon from "./Icon.svelte";
+  import Icon from "$lib/Icon.svelte";
 
   import { createEventDispatcher } from "svelte";
-  import type { ClockName, ClockEvents } from "../types/clock";
-  import {
-    getPaddedMinutesFromTimeInSeconds,
-    getPaddedSecondsFromTimeInSeconds,
-  } from "../utils/clockUtils";
+  import type { ClockName, ClockEvents } from "$lib/types/clock";
+  import { formatTime } from "$lib/utils/clockUtils";
 
   export let durationSeconds: number = 60 * 25; // Default is 25mins
   export let clockName: ClockName;
@@ -17,8 +14,6 @@
   let interval: string | number | NodeJS.Timeout | undefined = undefined;
 
   $: timeLeft = durationSeconds - timeSpent;
-  $: minutes = getPaddedMinutesFromTimeInSeconds(timeLeft);
-  $: seconds = getPaddedSecondsFromTimeInSeconds(timeLeft);
 
   const dispatch = createEventDispatcher<ClockEvents>();
 
@@ -66,7 +61,7 @@
 
 <div class="flex flex-col items-center justify-center">
   <div class="text-5xl pb-4">
-    {minutes}:{seconds}
+    {formatTime(timeLeft)}
   </div>
   <div class="text-xl">
     <button on:click={handleClockFlip}>
