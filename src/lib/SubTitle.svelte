@@ -1,5 +1,16 @@
 <script lang="ts">
-  export let title: string;
+	import type { FeatherIconNames } from 'feather-icons';
+	import Icon from '$lib/Icon.svelte';
+
+	export let title: string;
+	export let iconName: FeatherIconNames | undefined = undefined;
 </script>
 
-<h3 class="font-bold border-b-2 border-indigo-900 shadow-lg mt-4">{title}</h3>
+<h3 class="font-bold border-b-2 border-indigo-900 mt-4">
+	<div class="m-2 text-center inline-flex items-center">
+		{#if iconName !== undefined}
+			<span class="me-2"><Icon name={iconName} /></span>
+		{/if}
+		{title}
+	</div>
+</h3>

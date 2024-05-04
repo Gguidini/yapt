@@ -50,7 +50,8 @@
 		"vitest": "^1.5.0"
 	},
 	"dependencies": {
-		"feather-icons": "^4.29.1"
+		"feather-icons": "^4.29.1",
+		"svelte-sound": "^0.6.0"
 	},
 	"type": "module"
 }
