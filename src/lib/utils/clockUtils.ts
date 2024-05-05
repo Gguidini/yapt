@@ -1,4 +1,10 @@
-import type { ClockName } from '../types/clock';
+import type { ClockInfo, ClockName } from '../types/clock';
+
+export const CLOCK_INFO: ClockInfo[] = [
+	{ name: 'focus_time', durationSeconds: 60 * 25 },
+	{ name: 'short_pause', durationSeconds: 60 * 5 },
+	{ name: 'long_pause', durationSeconds: 60 * 10 }
+];
 
 export function getPaddedMinutesFromTimeInSeconds(timeSeconds: number): string {
 	return ('0' + Math.floor(timeSeconds / 60)).slice(-2);

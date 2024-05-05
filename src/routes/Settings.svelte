@@ -7,7 +7,11 @@
 	$: if (showModal && dialog) dialog.showModal();
 </script>
 
-<button on:click={() => (showModal = true)} class="absolute top-4 right-4 text-indigo-900">
+<button
+	on:click={() => (showModal = true)}
+	class="absolute top-4 right-4 text-indigo-900"
+	title="settings_toggle"
+>
 	<Icon name="settings" width="2em" height="2em" />
 </button>
 

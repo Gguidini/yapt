@@ -3,16 +3,10 @@
 	import type { AppContext } from '$lib/types/app';
 	import type { ClockEvents, ClockInfo } from '$lib/types/clock';
 	import pomotimer from '$lib/images/pomotimer.svg';
-	import { formatClockName, formatTime } from '$lib/utils/clockUtils';
+	import { CLOCK_INFO, formatClockName, formatTime } from '$lib/utils/clockUtils';
 	import SubTitle from '$lib/SubTitle.svelte';
 	import Tasks from '$lib/Tasks.svelte';
 	import Settings from './Settings.svelte';
-
-	const CLOCK_INFO: ClockInfo[] = [
-		{ name: 'focus_time', durationSeconds: 60 * 25 },
-		{ name: 'short_pause', durationSeconds: 60 * 5 },
-		{ name: 'long_pause', durationSeconds: 60 * 10 }
-	];
 
 	let appContext: AppContext = {
 		focusTime: 0,
@@ -47,7 +41,7 @@
 
 <main class="font-mono">
 	<Settings>
-		<div id="clock-type-selector" class="py-4 flex flex-col justify-between w-80">
+		<div title="clock_type_selector" class="py-4 flex flex-col justify-between w-80">
 			{#each CLOCK_INFO as clockInfo, idx}
 				<div class="flex flex-col justify-center px-4">
 					<label>
@@ -76,7 +70,7 @@
 
 	<div class="flex flex-col items-strech justify-evenly lg:flex-row">
 		<div class="flex flex-col justify-start items-strech justify-items-center" id="pomodoro">
-			<div class="py-4 flex justify-between">
+			<div class="py-4 flex justify-between" id="current_clock_selector">
 				{#each CLOCK_INFO as clockInfo, idx}
 					<label>
 						<input
