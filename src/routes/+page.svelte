@@ -1,10 +1,9 @@
 <script lang="ts">
 	import Clock from '$lib/Clock.svelte';
 	import type { AppContext } from '$lib/types/app';
-	import type { ClockEvents, ClockInfo } from '$lib/types/clock';
+	import type { ClockEvents } from '$lib/types/clock';
 	import pomotimer from '$lib/images/pomotimer.svg';
 	import { CLOCK_INFO, formatClockName, formatTime } from '$lib/utils/clockUtils';
-	import SubTitle from '$lib/SubTitle.svelte';
 	import Tasks from '$lib/Tasks.svelte';
 	import Settings from './Settings.svelte';
 	import Stats from './Stats.svelte';
