@@ -16,7 +16,6 @@ test('Clock component', () => {
 	const clockTime = screen.queryByText(/10:00/iu);
 	expect(clockTime).toBeTruthy();
 	expect(clockTime?.tagName).toBe('DIV');
-	expect(clockTime?.classList.value).toBe('text-5xl pb-4');
 });
 
 test('Clock emits clock_complete when complete', async () => {

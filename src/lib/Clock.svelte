@@ -68,13 +68,13 @@
 </svelte:head>
 
 <div class="flex flex-col items-center justify-center">
-	<div class="text-5xl pb-4">
+	<div class="text-5xl pb-4 text-secondary">
 		{formatTime(timeLeft)}
 	</div>
 	<div class="text-xl">
 		<button
 			on:click={handleClockFlip}
-			class="rounded-full bg-indigo-900 p-2 text-white text-center"
+			class="rounded-full bg-secondary p-2 text-primary text-center"
 		>
 			{#if isClockRunning}
 				<Icon name="refresh-ccw" width="2em" height="2em" />

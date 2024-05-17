@@ -12,7 +12,7 @@ const config = {
 			// https://docs.netlify.com/frameworks/sveltekit/#edge-functions
 			edge: true,
 			// https://docs.netlify.com/frameworks/sveltekit/#split-functions
-       		split: false
+			split: false
 		})
 	}
 };

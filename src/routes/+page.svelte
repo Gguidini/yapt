@@ -44,14 +44,16 @@
 	<!-- Settings is glued to the left-top corner -->
 	<Settings bind:clockInfo isClockRunning={appContext.isClockRunning} />
 
-	<div class="flex flex-col items-strech">
+	<div class="flex flex-col items-center">
 		<img
 			src={pomotimer}
 			alt="Pomodoro timer"
 			style="width: 128px; height: 128px;"
 			class="self-center"
 		/>
-		<h1 class="py-8 px-4 text-xl">Yet Another Pomodoro Timer</h1>
+		<h1 class="pb-8 pt-2 px-4 text-xl font-extrabold text-secondary-dark">
+			Yet Another Pomodoro Timer
+		</h1>
 	</div>
 
 	<div class="flex flex-col items-strech justify-evenly lg:flex-row">
@@ -61,7 +63,7 @@
 		>
 			<select
 				bind:value={currentClockIdx}
-				class="mb-4 p-2 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-lg font-bold"
+				class="mb-4 p-2 rounded-lg text-lg font-bold bg-primary-dark text-secondary-dark"
 			>
 				{#each clockInfo as clockInfo, idx}
 					<option value={idx}>
@@ -69,7 +71,7 @@
 					</option>
 				{/each}
 			</select>
-			<div class="py-8 px-4 border-2 border-indigo-900 shadow-lg" id="clock">
+			<div class="py-8 px-4 border-2 border-secondary shadow-lg" id="clock">
 				<Clock
 					bind:durationSeconds={currentClockInfo.durationSeconds}
 					clockName={currentClockInfo.name}
