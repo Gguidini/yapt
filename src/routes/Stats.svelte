@@ -7,7 +7,7 @@
 </script>
 
 <SubTitle title="Stats" iconName="pie-chart" />
-<div class="flex items-center justify-between py-3" id="stats">
+<div class="flex items-center justify-between py-3 text-secondary-dark" id="stats">
 	<p class="px-2">Focus time: {formatTime(statsInfo.focusTime)}</p>
 	<p class="px-2">Completed: {statsInfo.pomodorosCompleted}</p>
 	<p class="px-2">

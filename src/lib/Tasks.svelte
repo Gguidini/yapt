@@ -22,26 +22,35 @@
 
 <div class="flex flex-col flex-auto items-strech px-16 w-max">
 	<SubTitle title="Tasks" iconName="list" />
-	<p class="mb-4">{remaining} remaining</p>
+	<p class="mb-4 text-secondary">{remaining} remaining</p>
 
-	{#each tasks as todo}
-		<div class="my-1 w-full">
-			<input type="checkbox" bind:checked={todo.done} />
-
+	{#each tasks as todo, idx}
+		<div class="my-1 flex flex-row">
+			<input
+				id={'todo_' + idx}
+				type="checkbox"
+				bind:checked={todo.done}
+				class="mr-1 checked:bg-secondary bg-primary"
+			/>
 			<input
 				placeholder="What needs to be done?"
 				bind:value={todo.text}
 				disabled={todo.done}
-				class="disabled:line-through w-full"
+				class="disabled:line-through w-full bg-primary hover:bg-primary-dark text-secondary-dark"
 			/>
 		</div>
 	{/each}
 
-	<div class="flex flex-col mt-4">
-		<button class="m-2 text-center inline-flex items-center" on:click={add}
-			><Icon name="edit" /> <span class="ms-2">Add new</span>
+	<div class="flex flex-col mt-4 text-secondary-dark">
+		<button
+			class="m-2 text-center inline-flex items-center bg-primary-dark border border-secondary rounded-md p-2"
+			on:click={add}
+		>
+			<Icon name="edit" /> <span class="ms-2">Add new</span>
 		</button>
-		<button class="m-2 text-center inline-flex items-center" on:click={clear}
+		<button
+			class="m-2 text-center inline-flex items-center bg-primary-dark border border-secondary rounded-md p-2"
+			on:click={clear}
 			><Icon name="trash" /> <span class="ms-2">Clear completed</span>
 		</button>
 	</div>
