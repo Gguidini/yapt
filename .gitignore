@@ -12,5 +12,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 /.vscode
+/.netlify
+junit.xml
 
 coverage/

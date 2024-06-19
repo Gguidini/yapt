@@ -6,7 +6,11 @@ export default defineConfig({
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}'],
 		coverage: {
-			reporter: ['text', 'cobertura']
+			reporter: ['cobertura']
+		},
+		reporters: ['default', 'junit'],
+		outputFile: {
+			junit: './junit.xml'
 		}
 	}
 });
