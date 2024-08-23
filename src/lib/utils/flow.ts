@@ -33,28 +33,34 @@ export class LoopCombinator extends Combinator {
 	inner_values: Combinator[];
 	index: number;
 	size: number;
-	max_index: number;
+	loops_executed: number;
+	repeat_count: number | undefined;
 
-	constructor(inner_values: Combinator[], repeat_count: number) {
+	constructor(inner_values: Combinator[], repeat_count: number | undefined = undefined) {
 		super();
 		this.inner_values = inner_values;
 		this.index = 0;
 		this.size = inner_values.length;
-		this.max_index = this.size * repeat_count;
+		this.loops_executed = 0;
+		this.repeat_count = repeat_count;
 	}
 
 	has_next(): boolean {
-		return this.index < this.max_index;
+		return !(this.loops_executed == this.repeat_count);
 	}
 
 	next(): void {
-		this.index += 1;
+		this.index = (this.index + 1) % this.size;
+		if (this.index == 0) {
+			this.loops_executed += 1;
+		}
 	}
 
 	value(): ClockInfo {
 		const current_combinator = this.inner_values[this.index % this.size];
 		const current_value = current_combinator.value();
 		if (!current_combinator.has_next()) {
+			// inner combinator doesn't have another value
 			this.next();
 		}
 		return current_value;

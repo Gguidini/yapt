@@ -29,6 +29,29 @@ describe('Test flow', () => {
 			'short_pause'
 		]);
 	});
+	test('test LoopCombinator with undefined rotations', () => {
+		const loopCombinator = new LoopCombinator([
+			new SingleCombinator({ name: 'focus_time', durationSeconds: 60 * 25 }),
+			new SingleCombinator({ name: 'short_pause', durationSeconds: 60 * 5 })
+		]);
+		let i = 0;
+		const generated_list: string[] = [];
+		while (loopCombinator.has_next() && i < 9) {
+			generated_list.push(loopCombinator.value().name);
+			i++;
+		}
+		expect(generated_list).toStrictEqual([
+			'focus_time',
+			'short_pause',
+			'focus_time',
+			'short_pause',
+			'focus_time',
+			'short_pause',
+			'focus_time',
+			'short_pause',
+			'focus_time'
+		]);
+	});
 	test('test pomodoro flow', () => {
 		const pomodoroFlow = new LoopCombinator(
 			[
